@@ -1,0 +1,30 @@
+*{
+
+   /* background: rgb(60, 204, 215) ; */
+    text-align: center;
+    font-size: 18px;
+font-weight: bold;
+font-family: Arial, Helvetica, sans-serif;
+
+#input{
+    text-align: left;
+    background-color: rgb(104, 157, 153);
+   }
+}
+
+body{
+   padding-top: 30px; 
+    padding-left: 150px;
+    padding-right: 150px;
+background-color:rgb(35, 104, 99);
+
+}
+
+#form{
+
+    background-color: rgb(65, 131, 126);
+    padding: 20px;
+
+}
+
+
