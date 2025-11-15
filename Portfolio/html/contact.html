@@ -19,26 +19,28 @@
 
 </ul>
 
+<h1>Contact Me</h1>
 
     <form action="get" id="form">
     <label for="firstname" id ="name">Firstname:</label>
-    <input type="text" name="firstname" id="input" required> 
+    
+    <input type="text" name="firstname" class="input" required> 
 <br>
     <br>
     <label for="Lastname" id ="name">Lastname:</label>
-    <input type="text" name="Lastname" id="input" required>
+    <input type="text" name="Lastname" class="input" required>
     <br>
 <br>
     <label for="email" id ="name">Email:</label>
-    <input type="email" id="input" required>
+    <input type="email" class="input" required>
     <br>
 <br>
-    <label for="company" id ="name">Company Name:</label>
-    <select name="" id="name">
-    <option value="">aiub</option>
-    <option value=""></option>
-    <option value=""></option>
-    <option value=""></option>
+    <label for="company" id ="">Company Name:</label>
+    <select name="" class="input">
+    <option value="">AIUB</option>
+    <option value="">NSU</option>
+    <option value="">IUBAT</option>
+    <option value="">IUB</option>
     </select>
 <br>
 <br>
@@ -54,20 +56,32 @@
  <label for="services">Services:</label> 
  <br>
  <br>
-<input type="checkbox" id="services1"  value="" required> website development<br>
-<input type="checkbox" id="services2"  value="" required>mobile application development <br>
-<input type="checkbox" id="services3"  value="" required>machine learning <br>
+<input type="checkbox" id="services1"  class="checkbox"  required> website development<br>
+<input type="checkbox" id="services2"  class="checkbox" required>mobile application development <br>
+<input type="checkbox" id="services3" class="checkbox"  required>machine learning <br>
 
 
  <br>
 
- <label for="book_appoinment">Book For Appointment</label>
- <input type="date" name="book_appoinment" id="" required> 
+ <label for="book_appoinment">Book For Appointment:</label>
+ <input type="date" name="book_appoinment" class="input"  required> 
  <br>
  <br>
- <button type="submit" name="Submit" id="submit">Submit</button>
- <button type="reset" name="reset">Reset</button>
+ <div class = "button">
+ <button type="submit" name="Submit" >Submit</button>
+ <button type="reset" name="reset" >Reset</button>
+ </div>
+<br>
+
+ 
 
 </form>
+
 </body>
+<footer class=" footer">
+
+    <a href="">Facebook</a>
+    <a href="">Linkdin</a>
+    <a href="">X</a>
+ </footer>
 </html>
