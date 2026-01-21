@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finder Dashboard - BloodLink</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-white font-display overflow-x-hidden">
+
+    <!-- Authentication Check -->
+    <script>
+        // Check if user is logged in
+        const user = localStorage.getItem('user');
+        if (!user) {
+            // Redirect to login page if not authenticated
+            alert('Please login to access the Find Donors page.');
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <!-- Header -->
+    <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] dark:border-b-gray-800 bg-white dark:bg-background-dark px-4 py-3 lg:px-10 sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center gap-4 text-[#0d141b] dark:text-white">
+            <div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span class="material-symbols-outlined text-[24px]">bloodtype</span>
+            </div>
+            <h2 class="text-[#0d141b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]"><a
+                    href="../index.html">BloodLink</a></h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+            <nav class="hidden lg:flex items-center gap-9">
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="../index.html">Home</a>
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="About.html">About Us</a>
+                <a class="text-primary text-sm font-bold leading-normal" href="Finder.html">Finder Dashboard</a>
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="Contact.html">Contact</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <div
+                    class="flex items-center gap-3 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700">
+                    <div
+                        class="size-6 rounded-full bg-primary flex items-center justify-center text-[12px] text-white font-bold">
+                        R</div>
+                    <span class="text-sm font-medium hidden sm:inline" id="userDisplayName">Md. Rahman</span>
+                </div>
+                <button onclick="localStorage.clear(); window.location.href='login.html';"
+                    class="text-sm font-bold text-red-500 hover:text-red-600 transition-colors">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-10 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Left Panel: Profile & Stats -->
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                <!-- Profile Card -->
+                <div
+                    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+                    <div class="flex flex-col items-center text-center mb-6">
+                        <div
+                            class="size-24 rounded-full bg-primary/10 border-4 border-white dark:border-slate-800 shadow-lg flex items-center justify-center mb-4 overflow-hidden">
+                            <span class="material-symbols-outlined text-primary text-5xl">person</span>
+                        </div>
+                        <h3 class="text-xl font-bold" id="profileName">Md. Rahman</h3>
+                        <p class="text-slate-500 text-sm">Registered Finder</p>
+                    </div>
+                    <div class="space-y-4 border-t border-slate-100 dark:border-slate-800 pt-6">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">Account Status</span>
+                            <span
+                                class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold text-[11px] uppercase">Active</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">Total Requests</span>
+                            <span class="font-bold" id="totalRequestsCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Contact Card -->
+                <div class="bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="material-symbols-outlined text-red-600">emergency</span>
+                        <h4 class="font-bold text-red-600">Need Immediate Help?</h4>
+                    </div>
+                    <p class="text-sm text-red-800/70 dark:text-red-400 mb-4">
+                        Call our 24/7 emergency hotline if you can't find a donor through the system.
+                    </p>
+                    <a href="tel:01700000000"
+                        class="block text-center py-2 px-4 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 transition-colors">
+                        01700-000000
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Panel: Main Actions & Feed -->
+            <div class="lg:col-span-8 flex flex-col gap-8">
+                <div class="lg:col-span-8 flex flex-col gap-6">
+
+                    <!-- Welcome Section -->
+                    <div
+                        class="bg-primary bg-gradient-to-br from-primary to-blue-700 rounded-2xl p-8 text-white relative overflow-hidden shadow-lg shadow-blue-500/20">
+                        <div class="relative z-10">
+                            <h1 class="text-3xl font-black mb-2">Welcome back, Rahman!</h1>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Tabs -->
+                    <div class="flex items-center gap-4 border-b border-slate-200 dark:border-slate-800 pb-1">
+                        <button id="tabSearch"
+                            class="px-4 py-2 text-sm font-bold text-primary border-b-2 border-primary transition-all">
+                            Find Donors
+                        </button>
+                        <button id="tabHistory"
+                            class="px-4 py-2 text-sm font-medium text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white border-b-2 border-transparent hover:border-slate-300 transition-all">
+                            Request History
+                        </button>
+                    </div>
+
+                    <!-- FIND DONORS SECTION -->
+                    <div id="sectionSearch" class="flex flex-col gap-6">
+                        <!-- Search Filters -->
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <select id="searchBloodGroup"
+                                class="h-10 rounded-lg border-slate-200 text-sm dark:bg-slate-800 dark:border-slate-700">
+                                <option value="">All Blood Groups</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <button id="btnSearchDonors"
+                                class="h-10 bg-primary text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">
+                                Search Donors
+                            </button>
+                        </div>
+
+                        <!-- Donors List -->
+                        <div id="donorsList" class="flex flex-col gap-4">
+                            <div class="text-center py-10 text-slate-500">Select a blood group to find donors.</div>
+                        </div>
+                    </div>
+
+                    <!-- HISTORY SECTION (Hidden by default) -->
+                    <div id="sectionHistory" class="flex flex-col gap-6 hidden">
+
+                        <!-- Action Bar -->
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-[#0d141b] dark:text-white">Your Blood Requests</h3>
+                            <button id="findDonorBtn"
+                                class="h-10 px-4 bg-primary text-white text-sm font-bold rounded-lg hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 active:scale-95 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">add_circle</span>
+                                Broadcast Request
+                            </button>
+                        </div>
+
+                        <!-- Request Form (Initially Hidden) -->
+                        <div id="requestForm"
+                            class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-300"
+                            style="display: none;">
+                            <div
+                                class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50 dark:bg-slate-800/50">
+                                <h3 class="font-bold text-lg">Submit New Blood Request</h3>
+                                <button
+                                    onclick="document.getElementById('requestForm').style.display='none'; document.getElementById('findDonorBtn').style.display='flex';"
+                                    class="text-slate-400 hover:text-red-500 transition-colors">
+                                    <span class="material-symbols-outlined">close</span>
+                                </button>
+                            </div>
+                            <div class="p-6">
+                                <form id="submissionForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- Blood Group -->
+                                    <div class="flex flex-col gap-2">
+                                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Required
+                                            Blood
+                                            Group</label>
+                                        <select id="bloodGroup" required
+                                            class="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary">
+                                            <option value="">-- Select --</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Admitted Hospital -->
+                                    <div class="flex flex-col gap-2">
+                                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Admitted Hospital</label>
+                                        <select id="admittedHospitalSelect" required onchange="toggleOtherHospital(this.value)"
+                                            class="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary">
+                                            <option value="">-- Select Hospital --</option>
+                                            <option value="Dhaka Medical College">DMCH</option>
+                                            <option value="BSMMU">BSMMU</option>
+                                            <option value="National Blood Transfusion Center">National BTC</option>
+                                            <option value="Ibn Sina">Ibn Sina</option>
+                                            <option value="Square Hospital">Square Hospital</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <input type="text" id="otherAdmittedHospital" placeholder="Enter hospital name"
+                                            style="display: none;"
+                                            class="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" />
+                                    </div>
+
+                                    <!-- Banks to Notify -->
+                                    <div class="flex flex-col gap-2 md:col-span-2">
+                                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">
+                                        Banks to Notify (Multiple)</label>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                            <label
+                                                class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <input type="checkbox" name="requestHospitals"
+                                                    value="Dhaka Medical College"
+                                                    class="rounded text-primary focus:ring-primary">
+                                                <span class="text-xs">DMCH</span>
+                                            </label>
+                                            <label
+                                                class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <input type="checkbox" name="requestHospitals" value="BSMMU"
+                                                    class="rounded text-primary focus:ring-primary">
+                                                <span class="text-xs">BSMMU</span>
+                                            </label>
+                                            <label
+                                                class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <input type="checkbox" name="requestHospitals"
+                                                    value="National Blood Transfusion Center"
+                                                    class="rounded text-primary focus:ring-primary">
+                                                <span class="text-xs">National BTC</span>
+                                            </label>
+                                            <label
+                                                class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <input type="checkbox" name="requestHospitals" value="Ibn Sina"
+                                                    class="rounded text-primary focus:ring-primary">
+                                                <span class="text-xs">Ibn Sina</span>
+                                            </label>
+                                            <label
+                                                class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <input type="checkbox" name="requestHospitals" value="Square Hospital"
+                                                    class="rounded text-primary focus:ring-primary">
+                                                <span class="text-xs">Square Hosp</span>
+                                            </label>
+                                            <label
+                                                class="flex items-center gap-3 p-3 rounded-xl border border-slate-100 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <input type="checkbox" name="requestHospitals" value="All Nearby"
+                                                    class="rounded text-primary focus:ring-primary">
+                                                <span class="text-xs font-bold text-primary">All Nearby</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Location -->
+                                    <div class="flex flex-col gap-2 md:col-span-2">
+                                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Exact
+                                            Location
+                                            (Ward/Room/Bed)</label>
+                                        <textarea id="patientLocation" rows="3"
+                                            placeholder="e.g. Ward 5, Bed 12, Level 4 Main Building" required
+                                            class="rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary"></textarea>
+                                    </div>
+
+                                    <!-- Contacts -->
+                                    <div class="flex flex-col gap-2">
+                                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Primary
+                                            Contact
+                                            (Required)</label>
+                                        <input type="tel" id="contact1" placeholder="01XXX-XXXXXX" required
+                                            class="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" />
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">Alternative
+                                            Contact
+                                            (Optional)</label>
+                                        <input type="tel" id="contact2" placeholder="01XXX-XXXXXX"
+                                            class="h-12 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary" />
+                                    </div>
+
+                                    <button type="button" id="sendRequestBtn"
+                                        class="md:col-span-2 h-14 bg-primary text-white font-black rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98] mt-4 flex items-center justify-center gap-3 text-lg">
+                                        <span class="material-symbols-outlined">send</span>
+                                        Broadcast Blood Request
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Active Requests Feed -->
+                        <div class="flex flex-col gap-6">
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-2xl font-black">Your Blood Requests</h2>
+                                <span class="text-sm text-slate-500 font-medium">Auto-updates in real-time</span>
+                            </div>
+
+                            <div id="requestsFeed" class="flex flex-col gap-4">
+                                <!-- Placeholder if empty -->
+                                <div id="emptyRequests"
+                                    class="bg-white dark:bg-slate-900 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-12 text-center flex flex-col items-center gap-4">
+                                    <div
+                                        class="size-16 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-300">
+                                        <span class="material-symbols-outlined text-4xl">inbox</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg mb-1">No active requests</h4>
+                                        <p class="text-slate-500 text-sm max-w-xs mx-auto">When you submit a
+                                            request, it will
+                                            appear here with its real-time status.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Template for a Request Card (Hidden by default or managed by JS) -->
+                                <!-- 
+                        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row gap-6 relative overflow-hidden group">
+                            <div class="size-16 shrink-0 rounded-2xl bg-red-100 dark:bg-red-900/30 text-red-600 flex flex-col items-center justify-center">
+                                <span class="text-[10px] font-bold uppercase">Type</span>
+                                <span class="text-2xl font-black">B+</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 font-bold text-[10px] uppercase">Pending</span>
+                                    <span class="text-[11px] text-slate-400">Submitted 2 hours ago</span>
+                                </div>
+                                <h4 class="font-bold text-lg mb-1">Dhaka Medical College Hospital</h4>
+                                <p class="text-sm text-slate-500">Ward 4, Room 201 • Contact: 01700-XXXXXX</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button class="size-10 rounded-lg border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-red-500 hover:border-red-100 transition-all">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                                <button class="h-10 px-4 bg-primary text-white text-xs font-bold rounded-lg hover:bg-blue-600 transition-all">
+                                    Track Status
+                                </button>
+                            </div>
+                        </div>
+                        -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-gray-800 pt-16 pb-8 mt-20">
+        <div class="max-w-7xl mx-auto px-4 lg:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary text-[32px]">bloodtype</span>
+                        <span class="text-2xl font-black">BloodLink</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
+                        The modern solution for blood donation management. Join us in our mission to ensure no life is
+                        lost due to blood scarcity.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="../index.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">Home</a>
+                        </li>
+                        <li><a href="About.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">About
+                                Us</a></li>
+                        <li><a href="Finder.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm border-b-2 border-primary">Finder
+                                Dashboard</a></li>
+                        <li><a href="Contact.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Emergency</h4>
+                    <div
+                        class="bg-red-50 dark:bg-red-900/10 p-4 rounded-lg border border-red-100 dark:border-red-900/30">
+                        <p class="text-red-600 font-bold text-lg mb-1">01700-000000</p>
+                        <p class="text-xs text-red-500">24/7 Emergency Hotline</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 dark:border-gray-800 pt-8 text-center">
+                <p class="text-sm text-slate-500">© 2026 BloodLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/Finder.js"></script>
+    <script>
+        function toggleOtherHospital(val) {
+            const otherInput = document.getElementById('otherAdmittedHospital');
+            if (val === 'Other') {
+                otherInput.style.display = 'block';
+                otherInput.focus();
+            } else {
+                otherInput.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>

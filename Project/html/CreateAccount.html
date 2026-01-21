@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account - BloodLink</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts: Lexend -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-white font-display">
+    <!-- Header -->
+    <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] dark:border-b-gray-800 bg-white dark:bg-background-dark px-4 py-3 lg:px-10 sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center gap-4 text-[#0d141b] dark:text-white">
+            <div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span class="material-symbols-outlined text-[24px]">bloodtype</span>
+            </div>
+            <h2 class="text-[#0d141b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]"><a
+                    href="../index.html">BloodLink</a></h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+            <nav class="hidden lg:flex items-center gap-9">
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="../index.html">Home</a>
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="About.html">About Us</a>
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="Contact.html">Contact</a>
+            </nav>
+            <div class="flex gap-2">
+                <a href="login.html"
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+                    <span class="truncate">Login</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="py-12 lg:py-20">
+        <div class="max-w-3xl mx-auto px-4 lg:px-10">
+            <!-- Card Container -->
+            <div
+                class="bg-white dark:bg-slate-800 p-8 lg:p-12 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700">
+                <!-- Header -->
+                <div class="text-center mb-10">
+                    <div class="flex items-center justify-center gap-3 mb-4">
+                        <div class="size-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-[28px]">bloodtype</span>
+                        </div>
+                        <h1 class="text-3xl lg:text-4xl font-black">Create Account</h1>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400">Join BloodLink and help save lives</p>
+                </div>
+
+                <!-- Role Selection -->
+                <div class="mb-8">
+                    <label class="flex flex-col gap-2">
+                        <span class="text-sm font-medium">Signing up as</span>
+                        <select id="roleSelect"
+                            class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-primary focus:border-primary">
+                            <option value="">-- Select Role --</option>
+                            <option value="donor">Donor</option>
+                            <option value="finder">Finder</option>
+                        </select>
+                    </label>
+                </div>
+
+                <!-- Form Container -->
+                <div id="formContainer" style="display: none;">
+                    <form id="accountForm" class="flex flex-col gap-6">
+                        <!-- Personal Information Section -->
+                        <div class="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-xl">
+                            <h3 class="text-lg font-bold mb-6 pb-3 border-b border-slate-200 dark:border-slate-700">
+                                Personal Information</h3>
+
+                            <div class="flex flex-col gap-5">
+                                <label class="flex flex-col gap-2">
+                                    <span class="text-sm font-medium">Full Name</span>
+                                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name"
+                                        class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary"
+                                        required />
+                                </label>
+
+                                <label class="flex flex-col gap-2">
+                                    <span class="text-sm font-medium">Email</span>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email address"
+                                        class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary"
+                                        required />
+                                </label>
+
+                                <label class="flex flex-col gap-2">
+                                    <span class="text-sm font-medium">Phone Number</span>
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
+                                        class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary"
+                                        required />
+                                </label>
+
+                                <label class="flex flex-col gap-2">
+                                    <span class="text-sm font-medium">Password</span>
+                                    <input type="password" id="password" name="password"
+                                        placeholder="Create a strong password (min. 6 characters)"
+                                        class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary"
+                                        required />
+                                    <span class="text-xs text-slate-500">Minimum 6 characters</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Fields (populated by JavaScript) -->
+                        <div id="dynamicFields"></div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="h-14 bg-primary text-white font-black rounded-lg hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98]">
+                            Create Account
+                        </button>
+
+                        <!-- Login Link -->
+                        <p class="text-center text-sm text-slate-600 dark:text-slate-400">
+                            Already have an account?
+                            <a href="login.html" class="font-bold text-primary hover:underline">Login here</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/CreateAccount.js"></script>
+</body>
+
+</html>

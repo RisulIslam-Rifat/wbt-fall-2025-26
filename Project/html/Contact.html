@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - BloodLink</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-white font-display">
+
+    <!-- Header -->
+    <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] dark:border-b-gray-800 bg-white dark:bg-background-dark px-4 py-3 lg:px-10 sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center gap-4 text-[#0d141b] dark:text-white">
+            <div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span class="material-symbols-outlined text-[24px]">bloodtype</span>
+            </div>
+            <h2 class="text-[#0d141b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]"><a
+                    href="../index.html">BloodLink</a></h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+            <nav class="hidden lg:flex items-center gap-9">
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="../index.html">Home</a>
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="About.html">About Us</a>
+                <a class="text-primary text-sm font-bold leading-normal" href="Contact.html">Contact</a>
+            </nav>
+            <div class="flex gap-2">
+                <a href="login.html"
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+                    <span class="truncate">Login</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-20">
+        <div class="max-w-7xl mx-auto px-4 lg:px-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+                <!-- Contact Info -->
+                <div class="flex flex-col gap-10">
+                    <div>
+                        <h1 class="text-4xl lg:text-5xl font-black mb-6">Get in touch</h1>
+                        <p class="text-lg text-slate-600 dark:text-slate-400">
+                            Have questions or suggestions? We'd love to hear from you. Reach out to us through any of
+                            these channels.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-8">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Email us</h4>
+                                <p class="text-slate-500">support@bloodlink.com</p>
+                                <p class="text-slate-500">info@bloodlink.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">call</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Call us</h4>
+                                <p class="text-slate-500">+880 1700-000000</p>
+                                <p class="text-slate-500">Mon-Fri from 9am to 6pm</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Visit us</h4>
+                                <p class="text-slate-500">123 Health Street, Medicity</p>
+                                <p class="text-slate-500">Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div
+                    class="bg-white dark:bg-slate-800 p-8 lg:p-10 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700">
+                    <form onsubmit="event.preventDefault(); alert('Message sent successfully!'); this.reset();"
+                        class="flex flex-col gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <label class="flex flex-col gap-2">
+                                <span class="text-sm font-medium">First Name</span>
+                                <input type="text" placeholder="John"
+                                    class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-primary focus:border-primary"
+                                    required />
+                            </label>
+                            <label class="flex flex-col gap-2">
+                                <span class="text-sm font-medium">Last Name</span>
+                                <input type="text" placeholder="Doe"
+                                    class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-primary focus:border-primary"
+                                    required />
+                            </label>
+                        </div>
+                        <label class="flex flex-col gap-2">
+                            <span class="text-sm font-medium">Email</span>
+                            <input type="email" placeholder="john@example.com"
+                                class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-primary focus:border-primary"
+                                required />
+                        </label>
+                        <label class="flex flex-col gap-2">
+                            <span class="text-sm font-medium">Subject</span>
+                            <input type="text" placeholder="How can we help?"
+                                class="h-12 rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-primary focus:border-primary"
+                                required />
+                        </label>
+                        <label class="flex flex-col gap-2">
+                            <span class="text-sm font-medium">Message</span>
+                            <textarea rows="5" placeholder="Your message..."
+                                class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-900 focus:ring-primary focus:border-primary"
+                                required></textarea>
+                        </label>
+                        <button type="submit"
+                            class="h-14 bg-primary text-white font-black rounded-lg hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 active:scale-[0.98]">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 lg:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary text-[32px]">bloodtype</span>
+                        <span class="text-2xl font-black">BloodLink</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
+                        The modern solution for blood donation management. Join us in our mission to ensure no life is
+                        lost due to blood scarcity.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="../index.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">Home</a>
+                        </li>
+                        <li><a href="About.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">About
+                                Us</a></li>
+                        <li><a href="Contact.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Emergency</h4>
+                    <div
+                        class="bg-red-50 dark:bg-red-900/10 p-4 rounded-lg border border-red-100 dark:border-red-900/30">
+                        <p class="text-red-600 font-bold text-lg mb-1">01700-000000</p>
+                        <p class="text-xs text-red-500">24/7 Emergency Hotline</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 dark:border-gray-800 pt-8 text-center">
+                <p class="text-sm text-slate-500">© 2026 BloodLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

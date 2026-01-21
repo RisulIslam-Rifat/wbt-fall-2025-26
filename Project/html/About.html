@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BloodLink</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-white font-display">
+
+    <!-- Header -->
+    <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] dark:border-b-gray-800 bg-white dark:bg-background-dark px-4 py-3 lg:px-10 sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center gap-4 text-[#0d141b] dark:text-white">
+            <div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <span class="material-symbols-outlined text-[24px]">bloodtype</span>
+            </div>
+            <h2 class="text-[#0d141b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]"><a
+                    href="../index.html">BloodLink</a></h2>
+        </div>
+        <div class="flex flex-1 justify-end gap-8">
+            <nav class="hidden lg:flex items-center gap-9">
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="../index.html">Home</a>
+                <a class="text-primary text-sm font-bold leading-normal" href="About.html">About Us</a>
+                <a class="text-[#0d141b] dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal"
+                    href="Contact.html">Contact</a>
+            </nav>
+            <div class="flex gap-2">
+                <a href="login.html"
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors">
+                    <span class="truncate">Login</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative py-20 bg-white dark:bg-background-dark overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 lg:px-10 flex flex-col items-center text-center">
+                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Our Story</span>
+                <h1 class="text-4xl lg:text-6xl font-black text-[#0d141b] dark:text-white mb-6 leading-tight">Saving
+                    Lives Through <br /><span class="text-primary">Innovation</span> & Compassion</h1>
+                <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mb-10 leading-relaxed">
+                    BloodLink was founded on a simple belief: no life should be lost due to the lack of access to blood.
+                    We bridge the gap between donors and those in need through technology.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="py-20 bg-slate-50 dark:bg-slate-900/50">
+            <div class="max-w-7xl mx-auto px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div
+                    class="bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700">
+                    <div
+                        class="size-14 bg-red-100 dark:bg-red-900/30 text-red-600 rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">flag</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        To simplify and digitize the blood donation process, ensuring that every patient in need of
+                        blood can find a compatible donor instantly, regardless of their location or time of day.
+                    </p>
+                </div>
+                <div
+                    class="bg-white dark:bg-slate-800 p-10 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700">
+                    <div
+                        class="size-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">visibility</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-4">Our Vision</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        To become the world's most trusted and efficient digital blood network, fostering a culture of
+                        voluntary blood donation and saving millions of lives globally.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="py-16 bg-white dark:bg-background-dark">
+            <div class="max-w-7xl mx-auto px-4 lg:px-10">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <p class="text-4xl font-black text-primary mb-2">15k+</p>
+                        <p class="text-sm font-medium text-slate-500 uppercase">Registered Donors</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-black text-primary mb-2">500+</p>
+                        <p class="text-sm font-medium text-slate-500 uppercase">Hospitals</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-black text-primary mb-2">25k+</p>
+                        <p class="text-sm font-medium text-slate-500 uppercase">Lives Saved</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-black text-primary mb-2">100%</p>
+                        <p class="text-sm font-medium text-slate-500 uppercase">Free to Use</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 lg:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary text-[32px]">bloodtype</span>
+                        <span class="text-2xl font-black">BloodLink</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
+                        The modern solution for blood donation management. Join us in our mission to ensure no life is
+                        lost due to blood scarcity.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="../index.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">Home</a>
+                        </li>
+                        <li><a href="About.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">About
+                                Us</a></li>
+                        <li><a href="Contact.html"
+                                class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Emergency</h4>
+                    <div
+                        class="bg-red-50 dark:bg-red-900/10 p-4 rounded-lg border border-red-100 dark:border-red-900/30">
+                        <p class="text-red-600 font-bold text-lg mb-1">01700-000000</p>
+                        <p class="text-xs text-red-500">24/7 Emergency Hotline</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 dark:border-gray-800 pt-8 text-center">
+                <p class="text-sm text-slate-500">© 2026 BloodLink. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
